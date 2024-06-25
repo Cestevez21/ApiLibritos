@@ -3,7 +3,6 @@ const connectDB = require('./model/db/mongoDB');
 const User = require('./model/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const cors = require('cors');
 
 const app = express();
 
@@ -11,7 +10,6 @@ connectDB();
 
 
 app.use(express.json());
-
 app.get('/', async (req, res) => {
   res.send("Hello there! Api is working")
 });
@@ -71,7 +69,7 @@ function verifyToken(req, res, next) {
       next();
     });
   }
-let port = process.env.PORT ?? 9090
-app.listen(port, "0.0.0.0", () => {
+
+app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
