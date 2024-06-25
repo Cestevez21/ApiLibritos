@@ -121,23 +121,20 @@ app.get('/recommendation', verifyToken, async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    user
-    if(user['genre_fav'] == 'First' || user['books'].length < 10){
+    //user
+    //if(user['genre_fav'] == 'First' || user['books'].length < 15){
       
       const randomBook = await Books.aggregate([{ $sample: { size: 1 } }]);
       if (user.books.includes(randomBook["bookId"])) {
         return res.status(409).json({ message: 'Book already saved by the user' });
       }
       return res.status(200).json({ randomBook });
-    }
-    else{
-      do {
-        const recommendedBook = await Books.find({
-          Genre: user['genre_fav']}).limit(1);
-        } while (user.books.includes(recommendedBook['_id']));
-
-        return res.status(200).json({ recommendedGenre, recommendedBook });
-    }
+    //}
+    //else{
+      //let recommendedBook = await Books.find({
+     //   Genre: user['genre_fav'].replaceAll(' ', '_')}).limit(1);
+      //  return res.status(200).json({recommendedBook});
+   // }
   } catch (err) {
     console.log(err)
     return res.status(500).json({ message: 'Failed to get book recommendation', error: err });
