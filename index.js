@@ -69,7 +69,7 @@ function verifyToken(req, res, next) {
       next();
     });
   }
-
-app.listen(3000,"0.0.0.0", () => {
+const port = process.env.PORT || 3000;
+app.listen(port,"0.0.0.0", () => {
   console.log('Server running on port 3000');
 });
