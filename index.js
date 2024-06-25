@@ -13,6 +13,11 @@ connectDB();
 
 app.use(express.json());
 
+app.get('/', async (req, res) => {
+  res.send("Hello there! Api is working")
+});
+
+
 app.post('/register', async (req, res) => {
   try {
     const user = new User(req.body);
