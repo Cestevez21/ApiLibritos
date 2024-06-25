@@ -6,8 +6,8 @@ const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
-  genre_counts: { type: Map, of: Number },
+  books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'books' }],
+  genre_fav: { type: String, required: true, default: 'First'},
   tokens: [{ token: { type: String, required: true } }],
 });
 // Define a secret key for JWT
